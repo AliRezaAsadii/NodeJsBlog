@@ -1,10 +1,19 @@
-"use strict"
+"use strict";
 
-const express = require("express")
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 
-router.get("" , (req,res) => {
-    res.send('hello')
-})
+router.get("", (req, res) => {
+  const locals = {
+    title: "Nodejs Blog",
+    description: "Simple Nodejs Blog",
+  };
 
-module.exports = router
+  res.render("index", { locals });
+});
+
+router.get("/about", (req, res) => {
+  res.render("about");
+});
+
+module.exports = router;
