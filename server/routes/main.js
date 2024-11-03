@@ -1,6 +1,9 @@
 "use strict";
 
 const express = require("express");
+
+const Post = require("../models/post");
+
 const router = express.Router();
 
 router.get("", (req, res) => {
@@ -11,6 +14,7 @@ router.get("", (req, res) => {
 
   res.render("index", { locals });
 });
+
 
 router.get("/about", (req, res) => {
   res.render("about");
