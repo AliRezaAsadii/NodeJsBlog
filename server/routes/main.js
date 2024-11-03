@@ -6,15 +6,19 @@ const Post = require("../models/post");
 
 const router = express.Router();
 
-router.get("", (req, res) => {
+router.get("", async (req, res) => {
   const locals = {
     title: "Nodejs Blog",
     description: "Simple Nodejs Blog",
   };
 
-  res.render("index", { locals });
+  try {
+    const data = await Post.find();
+    res.render("index", { locals, data });
+  } catch (err) {
+    console.log(err)
+  }
 });
-
 
 router.get("/about", (req, res) => {
   res.render("about");
